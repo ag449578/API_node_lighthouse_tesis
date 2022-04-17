@@ -1,8 +1,10 @@
 # Get Started
 
-## Desarrollo
+## Requerimientos previos
+1. Tener instalado Node
+2. Tener instalado Npm
 
-### Comandos:
+### Comandos para despliegue:
 1. ```npm install``` 
 2. ```npm start```
 
