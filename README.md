@@ -1,13 +1,21 @@
-# Get Started
+# Descripción
+La aplicación es una API en NODE orientada a la evaluación de rendimiento web, dispone de un endpoint con la forma `https://<host>:<puerto>/api/usuario/<url del sitio a evaluar>`. Responde a una petición GET con los datos de las métricas evaluadas.
+
+## Métricas que evalúa
+1. first-contentful-paint
+2. largest-contentful-paint
+3. speed-index
+4. total-blocking-time
+
 
 ## Requerimientos previos
 1. Tener instalado Node
 2. Tener instalado Npm
 
-### Comandos para despliegue:
-1. ```npm install``` 
-2. ```npm start```
+## Despliegue
+1. Obtener el código fuente desde [GitHub]([https://link](https://github.com/ag449578/API_node_lighthouse_tesis.git))
+2. Ejecutar `npm install` para instalar las dependencias
+3. Ejecutar `npm start` para levantar la aplicacion 
+4. Consultar en una petición GET `https://<host>:<puerto>/api/usuario/<url del sitio a evaluar>`
 
-### Descripcion
-Para un despliegue local se iniciará el API_SERVER siguiendo los comandos mostrándose en consola el puerto por el que esta corriendo. Estará disponible el endpoint ```localhost:<*puerto*>/api/usuario?url=<*Sitio a evaluar ej. eva.uci.cu*>```y al hacer una petición GET se devolverá un ```json``` con toda la información de la auditoría.
 
