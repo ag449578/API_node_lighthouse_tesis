@@ -1,6 +1,7 @@
 const {response, request} = require('express');
 const lighthouse = require('lighthouse');
 const chromeLauncher = require('chrome-launcher');
+const lhconfig = require('../helpers/lhconfig');
 
 const usuariosGet =(req=request, res=response) => {
     // para recoger parametros query en la url
@@ -8,15 +9,17 @@ const usuariosGet =(req=request, res=response) => {
 
     (async () => {
         const chrome = await chromeLauncher.launch({chromeFlags: ['--headless']});
-        const options = {logLevel: 'info', output: 'json', onlyCategories: ['performance'], port: chrome.port};
-        const runnerResult = await lighthouse(`https://${url}`, options);
+        const options = {logLevel: 'info', output: 'json', port: chrome.port};
+        const runnerResult = await lighthouse(`https://${url}`, options,lhconfig);
       
-        // // `.report` is the HTML report as a string
-        // const reportHtml = runnerResult.report;
-        // fs.writeFileSync('lhreport.html', reportHtml);
-
+        const {lighthouseVersion, requestedUrl,fetchTime, environment, audits, categories}=runnerResult.lhr;
         res.json({
-            runnerResult
+            lighthouseVersion, 
+            requestedUrl,
+            fetchTime, 
+            environment, 
+            audits, 
+            categories
         });
       
         // `.lhr` is the Lighthouse Result as a JS object
