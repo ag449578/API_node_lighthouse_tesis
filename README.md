@@ -1,5 +1,5 @@
 # Descripción
-La aplicación es una API en NODE orientada a la evaluación de rendimiento web, dispone de un endpoint con la forma `https://<host>:<puerto>/api/usuario/<url del sitio a evaluar>`. Responde a una petición GET con los datos de las métricas evaluadas.
+La aplicación es una API en NODE orientada a la evaluación de rendimiento web, dispone de un endpoint con la forma `https://<host>:<puerto>/api/usuario/<url del sitio a evaluar>`. Responde a una petición GET con los datos de las métricas evaluadas en formato JSON.
 
 ## Métricas que evalúa
 1. first-contentful-paint
