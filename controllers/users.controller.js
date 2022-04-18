@@ -1,44 +1,21 @@
 const {response, request} = require('express');
-const lighthouse = require('lighthouse');
-const chromeLauncher = require('chrome-launcher');
-const lhconfig = require('../helpers/lhconfig');
+const {evaluador} = require('../helpers/lhconfig');
 
-const usuariosGet =(req=request, res=response) => {
+const usuariosGet =async (req=request, res=response) => {
     // para recoger parametros query en la url
     const {url}=req.query;
-
-    (async () => {
-        const chrome = await chromeLauncher.launch({chromeFlags: ['--headless']});
-        const options = {logLevel: 'info', output: 'json', port: chrome.port};
-        const runnerResult = await lighthouse(`https://${url}`, options,lhconfig);
-      
-        const {lighthouseVersion, requestedUrl,fetchTime, environment, audits, categories}=runnerResult.lhr;
-        res.json({
-            lighthouseVersion, 
-            requestedUrl,
-            fetchTime, 
-            environment, 
-            audits, 
-            categories
-        });
-      
-        // `.lhr` is the Lighthouse Result as a JS object
-        console.log('Report is done for', runnerResult.lhr.finalUrl);
-        console.log('Performance score was', runnerResult.lhr.categories.performance.score * 100);
-      
-        await chrome.kill();
-    })();
-
-
-    
+    // Llamada a la afuncion que evalua las petricas y devuelve la informacion
+    const data=await evaluador(url);
+    // Filtrando la informacion que se quiere y enviando la respuesta
+    res.json({
+        data
+    });    
 }
 
-const usuariosPost =(req, res=Response) => {
+/* const usuariosPost =(req, res=Response) => {
 
     // json que viene en el req
     const {nombre, edad}=req.body;
-
-
     res.json({
         texto: 'get-usuariosPost',
         nombre,
@@ -61,11 +38,11 @@ const usuariosDelete =(req, res=Response) => {
         texto: 'get-usuariosDelete'
     });
 }
-
+ */
 
 module.exports={
     usuariosGet,
-    usuariosPost,
-    usuariosPut,
-    usuariosDelete
+    // usuariosPost,
+    // usuariosPut,
+    // usuariosDelete
 }
