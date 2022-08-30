@@ -4,6 +4,7 @@ const cors = require('cors');
 class Server{
 
     constructor(){
+        //Aqui se crea el server
         this.app= express();
         this.port=process.env.PORT;
         // esta es la url de la ruta
@@ -17,7 +18,7 @@ class Server{
     middlewares(){
         // para publicar el directorio publico por defecto
         this.app.use(express.static('public'))
-        // cors
+        // cors para evitar errores a la hora de la peticion con algunos navegadores
         this.app.use(cors());
         // Lectura y parseo del body
         this.app.use(express.json());
