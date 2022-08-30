@@ -10,6 +10,7 @@ const config = {
             'largest-contentful-paint',
             'speed-index',
             'total-blocking-time',
+            'interactive',
         ],
     },
 };

@@ -2,7 +2,7 @@ const {response, request} = require('express');
 const {evaluador} = require('../helpers/lhconfig');
 
 const usuariosGet =async (req=request, res=response) => {
-    // para recoger parametros query en la url
+    // para recoger parametros query en la url a traves del metodo GET ej: ?url=asdasdasd
     const {url}=req.query;
     // Llamada a la afuncion que evalua las petricas y devuelve la informacion
     const data=await evaluador(url);
