@@ -8,7 +8,7 @@ class Server{
         this.app= express();
         this.port=process.env.PORT;
         // esta es la url de la ruta
-        this.usuarioPath='/api/usuario';
+        this.usuarioPath='/get/performance';
         // midelwares
         this.middlewares();
         // rutas
