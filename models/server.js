@@ -32,6 +32,7 @@ class Server{
         this.app.listen(this.port, () => {
             console.log('Aplicaicon corriendo en puerto', this.port);
         })
+        return 'Server up';
     }
 }
 
