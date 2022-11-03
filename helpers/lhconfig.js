@@ -1,19 +1,7 @@
 const lighthouse = require('lighthouse');
 const chromeLauncher = require('chrome-launcher');
+const {config} = require('./config')
 
-// Configuraciones para la funcion evaluador
-const config = {
-    extends: 'lighthouse:default',
-    settings: {
-        onlyAudits: [
-            'first-contentful-paint',
-            'largest-contentful-paint',
-            'speed-index',
-            'total-blocking-time',
-            'interactive',
-        ],
-    },
-};
 
 // Funcion que evalua las metricas
 const evaluacionPerformance= async (url) => {
@@ -21,7 +9,7 @@ const evaluacionPerformance= async (url) => {
     const options = {logLevel: 'info', output: 'json', port: chrome.port};
     const runnerResult = await lighthouse(`https://${url}`, options, config);
     
-    // `.lhr` is the Lighthouse Result as a JS object
+    // lhr es el resultado de lighthouse como objeto literal de javascript
     console.log('Report is done for', runnerResult.lhr.finalUrl);
     console.log('Performance score was', runnerResult.lhr.categories.performance.score * 100);
     
@@ -41,6 +29,5 @@ const evaluacionPerformance= async (url) => {
 }
 
 module.exports={
-    config,
     evaluacionPerformance
 }

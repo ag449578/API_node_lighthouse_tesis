@@ -3,11 +3,11 @@ const cors = require('cors');
 
 class Server{
 
+    //Aqui se crea la configuración del server
     constructor(){
-        //Aqui se crea el server
         this.app= express();
         this.port=process.env.PORT;
-        // esta es la url de la ruta
+        // esta es la url de la ruta del endpoin
         this.usuarioPath='/get/performance';
         // midelwares
         this.middlewares();
@@ -25,9 +25,11 @@ class Server{
     }
 
     route(){
+        //Aqui se cargan las rutas de endpoin
         this.app.use(this.usuarioPath, require('../routes/users.route'));
     }
 
+    //Con este metodo se pone el server a la escucha
     listen(){
         this.app.listen(this.port, () => {
             console.log('Aplicaicon corriendo en puerto', this.port);
