@@ -12,6 +12,6 @@ const config = {
     },
 };
 
-module.exports={
+module.exports = {
     config
 }

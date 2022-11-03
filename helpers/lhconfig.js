@@ -28,6 +28,6 @@ const evaluacionPerformance= async (url) => {
     };
 }
 
-module.exports={
+module.exports = {
     evaluacionPerformance
 }
