@@ -16,7 +16,7 @@ const config = {
 };
 
 // Funcion que evalua las metricas
-const evaluador= async (url) => {
+const evaluacionPerformance= async (url) => {
     const chrome = await chromeLauncher.launch({chromeFlags: ['--headless']});
     const options = {logLevel: 'info', output: 'json', port: chrome.port};
     const runnerResult = await lighthouse(`https://${url}`, options, config);
@@ -42,5 +42,5 @@ const evaluador= async (url) => {
 
 module.exports={
     config,
-    evaluador
+    evaluacionPerformance
 }
